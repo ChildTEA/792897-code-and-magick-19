@@ -17,11 +17,12 @@ var INTRO_MARGIN_BOTTOM = 20;
 // RatingBars:
 var BAR_WIDTH = 40;
 var BAR_HEIGHT = 150;
+var BAR_NUMBER = 4;
 var BAR_GAP = 50;
-var BAR_MARGIN_LEFT = (CLOUD_WIDTH - 4 * BAR_WIDTH - 3 * BAR_GAP) / 2;
+var BAR_MARGIN_LEFT = (CLOUD_WIDTH - BAR_NUMBER * BAR_WIDTH - (BAR_NUMBER - 1) * BAR_GAP) / 2;
 var USER_BAR_COLOR = 'rgb(255, 0, 0)';
 
-var findHighest = function (nums) {
+var getLargestNumber = function (nums) {
   var highest = nums[0];
 
   for (var i = 0; i < nums.length; i++) {
@@ -44,7 +45,7 @@ var renderNames = function (ctx, names) {
 };
 
 var renderBars = function (ctx, names, times) {
-  var highestTime = findHighest(times);
+  var highestTime = getLargestNumber(times);
 
   for (var i = 0; i < names.length; i++) {
     var currentBarHeigth = (BAR_HEIGHT * times[i]) / highestTime;
