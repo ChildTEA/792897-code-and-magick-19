@@ -48,8 +48,8 @@ var renderBars = function (ctx, names, times) {
   var highestTime = getLargestNumber(times);
 
   for (var i = 0; i < names.length; i++) {
-    var currentBarHeigth = (BAR_HEIGHT * times[i]) / highestTime;
-    var topBarGap = BAR_HEIGHT - currentBarHeigth;
+    var currentBarHeight = (BAR_HEIGHT * times[i]) / highestTime;
+    var topBarGap = BAR_HEIGHT - currentBarHeight;
     var positionX = CLOUD_X + BAR_MARGIN_LEFT + i * (BAR_WIDTH + BAR_GAP);
     var textPositionY = INTRO_HEIGHT + INTRO_MARGIN_BOTTOM + LINE_HEIGHT + topBarGap;
     var positionY = textPositionY + LINE_HEIGHT / 2;
@@ -60,7 +60,7 @@ var renderBars = function (ctx, names, times) {
       ctx.fillStyle = 'hsl(240, ' + Math.floor(Math.random() * 100) + '%, 50%)';
     }
 
-    ctx.fillRect(positionX, positionY, BAR_WIDTH, currentBarHeigth);
+    ctx.fillRect(positionX, positionY, BAR_WIDTH, currentBarHeight);
 
     ctx.fillStyle = '#000000';
     var timeToPrint = Math.round(times[i]);
