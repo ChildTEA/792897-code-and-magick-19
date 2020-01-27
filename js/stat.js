@@ -84,8 +84,8 @@ window.renderStatistics = function (ctx, names, times) {
 
   var init = function () {
     renderDesk(CLOUD_X, CLOUD_Y);
-    renderIntro(INTRO_CONTENT);
-    renderBars(ctx, names, times);
+    renderIntro();
+    renderBars();
   };
 
   init();
