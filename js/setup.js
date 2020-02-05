@@ -14,7 +14,7 @@ var userEyesColorInput = setup.querySelector('input[name="eyes-color"]');
 var userFireball = setup.querySelector('.setup-fireball-wrap');
 var userFireballInput = setup.querySelector('input[name="fireball-color"]');
 
-userNameInput.addEventListener('invalid', function (evt) {
+userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
   } else if (userNameInput.validity.tooLong) {
