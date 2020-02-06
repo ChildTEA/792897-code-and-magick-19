@@ -16,7 +16,7 @@ var userFireballInput = setup.querySelector('input[name="fireball-color"]');
 var setupForm = setup.querySelector('.setup-wizard-form');
 var setupSubmit = setupForm.querySelector('.setup-submit');
 
-userNameInput.addEventListener('invalid', function () {
+userNameInput.addEventListener('input', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
   } else if (userNameInput.validity.tooLong) {
@@ -29,9 +29,7 @@ userNameInput.addEventListener('invalid', function () {
 });
 
 setupSubmit.addEventListener('click', function () {
-  if (userNameInput.validity.valid) {
-    userNameInput.setCustomValidity('');
-  }
+  userNameInput.setCustomValidity('');
 });
 
 var onPopupEscPress = function (evt) {
