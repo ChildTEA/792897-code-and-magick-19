@@ -64,7 +64,7 @@
     var startCoords = getStartCoords();
 
     var onEscapePress = function (evt) {
-      if (evt.code === window.util.ESCAPE_KEYCODE) {
+      if (evt.code === window.util.ESCAPE_KEYCODE && evt.target.type !== 'text') {
         block.style.top = startCoords.y + 'px';
         block.style.left = startCoords.x + 'px';
 
