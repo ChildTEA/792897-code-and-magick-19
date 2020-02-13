@@ -68,7 +68,7 @@
         block.style.top = startCoords.y + 'px';
         block.style.left = startCoords.x + 'px';
 
-        document.removeEventListener('kyedown', onEscapePress);
+        document.removeEventListener('keydown', onEscapePress);
         closer.removeEventListener('click', onCloserClick);
         closer.removeEventListener('keydown', onCloserEnterPress);
       }
@@ -78,7 +78,7 @@
       block.style.top = startCoords.y + 'px';
       block.style.left = startCoords.x + 'px';
 
-      document.removeEventListener('kyedown', onEscapePress);
+      document.removeEventListener('keydown', onEscapePress);
       closer.removeEventListener('click', onCloserClick);
       closer.removeEventListener('keydown', onCloserEnterPress);
     };
@@ -88,7 +88,7 @@
         block.style.top = startCoords.y + 'px';
         block.style.left = startCoords.x + 'px';
 
-        block.removeEventListener('kyedown', onEscapePress);
+        block.removeEventListener('keydown', onEscapePress);
         closer.removeEventListener('click', onCloserClick);
         closer.removeEventListener('keydown', onCloserEnterPress);
       }
