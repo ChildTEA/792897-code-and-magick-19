@@ -84,9 +84,9 @@
   };
 
   window.popup.init(setup, setupOpener, setupCloser);
+  window.dragAndAction.replace(setup, dialogHandler);
 
   setupOpener.addEventListener('click', onFirstSetupClick);
-
   setupOpener.addEventListener('keydown', onFirstSetupEnterPress);
 
   userNameInput.addEventListener('input', function () {
@@ -104,6 +104,4 @@
   setupSubmit.addEventListener('click', function () {
     userNameInput.setCustomValidity('');
   });
-
-  setup.addEventListener('mousedown', window.dragAndAction.replace(setup, dialogHandler));
 })();
