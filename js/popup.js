@@ -7,8 +7,6 @@
       document.addEventListener('keydown', onEscPress);
       closer.addEventListener('click', close);
       closer.addEventListener('keydown', onCloserEnterPress);
-
-      window.dragAndAction.reset(document.querySelector('.setup'), document.querySelector('.setup-close'));
     };
 
     var close = function () {
@@ -17,6 +15,8 @@
 
       closer.removeEventListener('click', close);
       closer.removeEventListener('keydown', onCloserEnterPress);
+
+      window.dragAndAction.reset(popup);
     };
 
     var onEscPress = function (evt) {

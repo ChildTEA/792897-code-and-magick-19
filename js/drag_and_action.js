@@ -3,7 +3,6 @@
 (function () {
   var replace = function (block, handler) {
     var onMouseDown = function (evt) {
-      evt.preventDefault();
 
       var startCoords = {
         x: evt.clientX,
@@ -13,7 +12,6 @@
       var isDragged = false;
 
       var onMouseMove = function (moveEvt) {
-        moveEvt.preventDefault();
         isDragged = true;
 
         var shift = {
@@ -30,9 +28,7 @@
         };
       };
 
-      var onMouseUp = function (upEvt) {
-        upEvt.preventDefault();
-
+      var onMouseUp = function () {
         document.removeEventListener('mousemove', onMouseMove);
         window.removeEventListener('mouseup', onMouseUp);
 
@@ -52,51 +48,9 @@
     handler.addEventListener('mousedown', onMouseDown);
   };
 
-  var reset = function (block, closer) {
-
-    var getStartCoords = function () {
-      return {
-        x: block.offsetLeft,
-        y: block.offsetTop
-      };
-    };
-
-    var startCoords = getStartCoords();
-
-    var onEscapePress = function (evt) {
-      if (evt.code === window.util.ESCAPE_KEYCODE && evt.target.type !== 'text') {
-        block.style.top = startCoords.y + 'px';
-        block.style.left = startCoords.x + 'px';
-
-        document.removeEventListener('keydown', onEscapePress);
-        closer.removeEventListener('click', onCloserClick);
-        closer.removeEventListener('keydown', onCloserEnterPress);
-      }
-    };
-
-    var onCloserClick = function () {
-      block.style.top = startCoords.y + 'px';
-      block.style.left = startCoords.x + 'px';
-
-      document.removeEventListener('keydown', onEscapePress);
-      closer.removeEventListener('click', onCloserClick);
-      closer.removeEventListener('keydown', onCloserEnterPress);
-    };
-
-    var onCloserEnterPress = function (evt) {
-      if (evt.code === window.util.ENTER_KEYCODE) {
-        block.style.top = startCoords.y + 'px';
-        block.style.left = startCoords.x + 'px';
-
-        block.removeEventListener('keydown', onEscapePress);
-        closer.removeEventListener('click', onCloserClick);
-        closer.removeEventListener('keydown', onCloserEnterPress);
-      }
-    };
-
-    document.addEventListener('keydown', onEscapePress);
-    closer.addEventListener('click', onCloserClick);
-    closer.addEventListener('keydown', onCloserEnterPress);
+  var reset = function (block) {
+    block.style.top = '';
+    block.style.left = '';
   };
 
   window.dragAndAction = {
