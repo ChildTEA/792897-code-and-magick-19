@@ -500,15 +500,15 @@ window.Game = (function () {
     _drawMessage: function (message) {
       var ctx = this.ctx;
 
-      var drawCloud = function (x, y, width, heigth) {
+      var drawCloud = function (x, y, width, height) {
         var offset = 10;
         ctx.beginPath();
         ctx.moveTo(x, y);
-        ctx.lineTo(x + offset, y + heigth / 2);
-        ctx.lineTo(x, y + heigth);
-        ctx.lineTo(x + width / 2, y + heigth - offset);
-        ctx.lineTo(x + width, y + heigth);
-        ctx.lineTo(x + width - offset, y + heigth / 2);
+        ctx.lineTo(x + offset, y + height / 2);
+        ctx.lineTo(x, y + height);
+        ctx.lineTo(x + width / 2, y + height - offset);
+        ctx.lineTo(x + width, y + height);
+        ctx.lineTo(x + width - offset, y + height / 2);
         ctx.lineTo(x + width, y);
         ctx.lineTo(x + width / 2, y + offset);
         ctx.lineTo(x, y);
