@@ -16,6 +16,7 @@
   var setupSubmit = setupForm.querySelector('.setup-submit');
   var SIMILAR_WIZARDS_NUMBER = 4;
   var GET_SIMILAR_WIZARDS_URL = 'https://js.dump.academy/code-and-magick/data';
+  var SEND_SETUP_DATA_URL = 'https://js.dump.academy/code-and-magick';
 
   var onFirstSetupClick = function () {
     window.backend.load(GET_SIMILAR_WIZARDS_URL, renderSimilarWizards, onRequestError);
@@ -36,6 +37,10 @@
       setupOpener.removeEventListener('click', onFirstSetupClick);
       setupOpener.removeEventListener('keydown', onFirstSetupEnterPress);
     }
+  };
+
+  var onFormSubmit = function () {
+    setup.classList.add('hidden');
   };
 
   var renderWizard = function (wizard) {
@@ -84,6 +89,12 @@
 
   setupOpener.addEventListener('click', onFirstSetupClick);
   setupOpener.addEventListener('keydown', onFirstSetupEnterPress);
+
+  setupForm.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+
+    window.backend.save(SEND_SETUP_DATA_URL, new FormData(setupForm), onFormSubmit, onRequestError);
+  });
 
   userNameInput.addEventListener('input', function () {
     if (userNameInput.validity.tooShort) {

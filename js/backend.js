@@ -49,7 +49,37 @@
   };
 
 
+  var save = function (url, data, onLoad, onError) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.responseType = 'json';
+
+    xhr.addEventListener('load', function () {
+      if (xhr.status === 200) {
+        onLoad(xhr.response);
+      } else {
+        checkStatus(xhr, onError);
+      }
+    });
+
+    xhr.addEventListener('error', function () {
+      onError('Произошла ошибка соединения');
+    });
+
+    xhr.addEventListener('timeout', function () {
+      onError('Запрос не успел выполниться за ' + xhr.timeout + 'ms');
+    });
+
+    xhr.timeout = 10000;
+
+
+    xhr.open('POST', url);
+    xhr.send(data);
+  };
+
+
   window.backend = {
     load: load,
+    save: save
   };
 })();
