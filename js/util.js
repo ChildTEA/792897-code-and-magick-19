@@ -30,6 +30,19 @@
     return array[randomIndex];
   };
 
+  var shuffleArray = function (array) {
+    var clonedItems = array.concat();
+    var j;
+    var temp;
+    for (var i = clonedItems.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      temp = clonedItems[j];
+      clonedItems[j] = clonedItems[i];
+      clonedItems[i] = temp;
+    }
+    return clonedItems;
+  };
+
 
   window.util = {
     ESCAPE_KEYCODE: ESCAPE_KEYCODE,
@@ -39,6 +52,7 @@
     isEnterEvent: isEnterEvent,
     getBiggestNumber: getBiggestNumber,
     getRandomArrayItem: getRandomArrayItem,
-    getRandomNumber: getRandomNumber
+    getRandomNumber: getRandomNumber,
+    shuffleArray: shuffleArray
   };
 })();
