@@ -1,6 +1,10 @@
 'use strict';
 
 (function () {
+  var SIMILAR_WIZARDS_NUMBER = 4;
+  var SIMILAR_WIZARDS_DOWNLOAD_URL = 'https://js.dump.academy/code-and-magick/data';
+  var SETUP_DATA_UPLOAD_URL = 'https://js.dump.academy/code-and-magick';
+
   var setup = document.querySelector('.setup');
   var setupOpener = document.querySelector('.setup-open-icon');
   var setupCloser = setup.querySelector('.setup-close');
@@ -14,12 +18,9 @@
   var userFireballColorInput = setup.querySelector('input[name="fireball-color"]');
   var setupForm = setup.querySelector('.setup-wizard-form');
   var setupSubmit = setupForm.querySelector('.setup-submit');
-  var SIMILAR_WIZARDS_NUMBER = 4;
-  var GET_SIMILAR_WIZARDS_URL = 'https://js.dump.academy/code-and-magick/data';
-  var SEND_SETUP_DATA_URL = 'https://js.dump.academy/code-and-magick';
 
   var onFirstSetupClick = function () {
-    window.backend.load(GET_SIMILAR_WIZARDS_URL, renderSimilarWizards, onRequestError);
+    window.backend.load(SIMILAR_WIZARDS_DOWNLOAD_URL, onRequestSuccess, onRequestError);
 
     setupOpener.removeEventListener('click', onFirstSetupClick);
     setupOpener.removeEventListener('keydown', onFirstSetupEnterPress);
@@ -28,7 +29,7 @@
   var onFirstSetupEnterPress = function (evt) {
     if (evt.code === window.util.ENTER_KEYCODE) {
 
-      window.backend.load(GET_SIMILAR_WIZARDS_URL, renderSimilarWizards, onRequestError);
+      window.backend.load(SIMILAR_WIZARDS_DOWNLOAD_URL, onRequestSuccess, onRequestError);
 
       window.colorize.userCoat(userCoat, userCoatColorInput);
       window.colorize.userEyes(userEyes, userEyesColorInput);
@@ -70,6 +71,10 @@
     setup.querySelector('.setup-similar').classList.remove('hidden');
   };
 
+  var onRequestSuccess = function (wizards) {
+    renderSimilarWizards(wizards);
+  };
+
   var onRequestError = function (errorMessage) {
     var node = document.createElement('div');
 
@@ -93,7 +98,7 @@
   setupForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
 
-    window.backend.save(SEND_SETUP_DATA_URL, new FormData(setupForm), onFormSubmit, onRequestError);
+    window.backend.save(SETUP_DATA_UPLOAD_URL, new FormData(setupForm), onFormSubmit, onRequestError);
   });
 
   userNameInput.addEventListener('input', function () {
