@@ -6,18 +6,14 @@
   var wizards = [];
   var userCoatColor = window.wizard.userColors.onCoatChange();
   var userEyesColor = window.wizard.userColors.onEyesChange();
-  var userFireballColor = window.wizard.userColors.onFireballChange();
 
   var getRank = function (wizard) {
     var rank = 0;
 
     if (wizard.colorCoat === userCoatColor) {
-      rank += 3;
-    }
-    if (wizard.colorEyes === userEyesColor) {
       rank += 2;
     }
-    if (wizard.colorFireball === userFireballColor) {
+    if (wizard.colorEyes === userEyesColor) {
       rank += 1;
     }
 
@@ -55,11 +51,6 @@
 
   window.wizard.userColors.onEyesChange = window.debounce(function (color) {
     userEyesColor = color;
-    updateWizards();
-  });
-
-  window.wizard.userColors.onFireballChange = window.debounce(function (color) {
-    userFireballColor = color;
     updateWizards();
   });
 

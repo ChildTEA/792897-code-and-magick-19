@@ -19,9 +19,6 @@
     },
     onEyesChange: function (color) {
       return color || userEyesColorInput.value;
-    },
-    onFireballChange: function (color) {
-      return color || userFireballColorInput.value;
     }
   };
 
@@ -73,7 +70,6 @@
       var color = window.util.getRandomArrayItem(FIREBALL_COLORS);
       userFireballColorInput.value = color;
       userFireball.style.backgroundColor = color;
-      userColors.onFireballChange(color);
     };
 
 
@@ -82,7 +78,6 @@
         var color = window.util.getRandomArrayItem(FIREBALL_COLORS);
         userFireballColorInput.value = color;
         userFireball.style.backgroundColor = color;
-        userColors.onFireballChange(color);
       }
     };
 
