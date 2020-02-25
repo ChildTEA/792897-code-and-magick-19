@@ -5,6 +5,7 @@
   var ENTER_KEYCODE = 'Enter';
   var SPACE_KEYCODE = 'Space';
 
+
   var isEscEvent = function (evt, action) {
     if (evt.code === ESCAPE_KEYCODE) {
       action();
