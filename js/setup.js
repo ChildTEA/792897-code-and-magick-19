@@ -95,6 +95,10 @@
   setupOpener.addEventListener('click', onFirstSetupClick);
   setupOpener.addEventListener('keydown', onFirstSetupEnterPress);
 
+  window.colorize.changeUserCoatColor(userCoat, userCoatColorInput);
+  window.colorize.changeUserEyesColor(userEyes, userEyesColorInput);
+  window.colorize.changeUserFireballColor(userFireball, userFireballColorInput);
+
   setupForm.addEventListener('submit', function (evt) {
     evt.preventDefault();
 

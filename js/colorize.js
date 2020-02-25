@@ -5,19 +5,19 @@
   var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
   var FIREBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
-  var getRandomCoatColor = function () {
-    return window.util.getRandomArrayItem(COAT_COLORS);
-  };
+  // var getRandomCoatColor = function () {
+  //   return window.util.getRandomArrayItem(COAT_COLORS);
+  // };
 
-  var getRandomEyesColor = function () {
-    return window.util.getRandomArrayItem(EYES_COLORS);
-  };
+  // var getRandomEyesColor = function () {
+  //   return window.util.getRandomArrayItem(EYES_COLORS);
+  // };
 
-  var getRandomFireballColor = function () {
-    return window.util.getRandomArrayItem(FIREBALL_COLORS);
-  };
+  // var getRandomFireballColor = function () {
+  //   return window.util.getRandomArrayItem(FIREBALL_COLORS);
+  // };
 
-  var userCoat = function (element, input) {
+  var changeUserCoatColor = function (element, input) {
 
     var onCoatClick = function () {
       var color = window.util.getRandomArrayItem(COAT_COLORS);
@@ -37,7 +37,7 @@
     element.addEventListener('keydown', onCoatEnterPress);
   };
 
-  var userEyes = function (element, input) {
+  var changeUserEyesColor = function (element, input) {
 
     var onEyesClick = function () {
       var color = window.util.getRandomArrayItem(EYES_COLORS);
@@ -57,7 +57,7 @@
     element.addEventListener('keydown', onEyesEnterPress);
   };
 
-  var userFireball = function (element, input) {
+  var changeUserFireballColor = function (element, input) {
     var onFireballClick = function () {
       var color = window.util.getRandomArrayItem(FIREBALL_COLORS);
       input.value = color;
@@ -78,12 +78,9 @@
   };
 
   window.colorize = {
-    getRandomCoatColor: getRandomCoatColor,
-    getRandomEyesColor: getRandomEyesColor,
-    getRandomFireballColor: getRandomFireballColor,
-    userCoat: userCoat,
-    userEyes: userEyes,
-    userFireball: userFireball,
+    changeUserCoatColor: changeUserCoatColor,
+    changeUserEyesColor: changeUserEyesColor,
+    changeUserFireballColor: changeUserFireballColor,
   };
 
 })();
