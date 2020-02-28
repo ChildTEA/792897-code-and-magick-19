@@ -14,10 +14,10 @@
   var userFireballColorInput = wizardElement.querySelector('input[name="fireball-color"]');
 
   var userColors = {
-    onCoatChange: function (color) {
+    updateCoat: function (color) {
       return color || userCoatColorInput.value;
     },
-    onEyesChange: function (color) {
+    updateEyes: function (color) {
       return color || userEyesColorInput.value;
     }
   };
@@ -27,7 +27,7 @@
       var color = window.util.getRandomArrayItem(COAT_COLORS);
       userCoatColorInput.value = color;
       userCoat.style.fill = color;
-      userColors.onCoatChange(color);
+      userColors.updateCoat(color);
     };
 
     var onUserCoatEnterPress = function (evt) {
@@ -35,7 +35,7 @@
         var color = window.util.getRandomArrayItem(COAT_COLORS);
         userCoatColorInput.value = color;
         userCoat.style.fill = color;
-        userColors.onCoatChange(color);
+        userColors.updateCoat(color);
       }
     };
 
@@ -49,7 +49,7 @@
       var color = window.util.getRandomArrayItem(EYES_COLORS);
       userEyesColorInput.value = color;
       userEyes.style.fill = color;
-      userColors.onEyesChange(color);
+      userColors.updateEyes(color);
     };
 
     var onUserEyesEnterPress = function (evt) {
@@ -57,7 +57,7 @@
         var color = window.util.getRandomArrayItem(EYES_COLORS);
         userEyesColorInput.value = color;
         userEyes.style.fill = color;
-        userColors.onEyesChange(color);
+        userColors.updateEyes(color);
       }
     };
 

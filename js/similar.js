@@ -4,8 +4,8 @@
   var SIMILAR_WIZARDS_DOWNLOAD_URL = 'https://js.dump.academy/code-and-magick/data';
 
   var wizards = [];
-  var userCoatColor = window.wizard.userColors.onCoatChange();
-  var userEyesColor = window.wizard.userColors.onEyesChange();
+  var userCoatColor = window.wizard.userColors.сoat();
+  var userEyesColor = window.wizard.userColors.updateEyes();
 
   var getRank = function (wizard) {
     var rank = 0;
@@ -21,13 +21,10 @@
   };
 
   var namesComparator = function (left, right) {
-    if (left > right) {
-      return 1;
-    } else if (left < right) {
-      return -1;
-    } else {
+    if (left === right) {
       return 0;
     }
+    return left > right ? 1 : -1;
   };
 
   var updateWizards = function () {
@@ -44,18 +41,18 @@
     window.render.wizards(sortedWizards);
   };
 
-  window.wizard.userColors.onCoatChange = window.debounce(function (color) {
+  window.wizard.userColors.updateCoat = window.debounce(function (color) {
     userCoatColor = color;
     updateWizards();
   });
 
-  window.wizard.userColors.onEyesChange = window.debounce(function (color) {
+  window.wizard.userColors.updateEyes = window.debounce(function (color) {
     userEyesColor = color;
     updateWizards();
   });
 
   var onRequestSuccess = function (data) {
-    wizards = (data);
+    wizards = data;
     updateWizards();
   };
 
