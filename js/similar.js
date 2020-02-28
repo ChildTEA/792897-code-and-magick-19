@@ -4,7 +4,7 @@
   var SIMILAR_WIZARDS_DOWNLOAD_URL = 'https://js.dump.academy/code-and-magick/data';
 
   var wizards = [];
-  var userCoatColor = window.wizard.userColors.сoat();
+  var userCoatColor = window.wizard.userColors.updateCoat();
   var userEyesColor = window.wizard.userColors.updateEyes();
 
   var getRank = function (wizard) {
